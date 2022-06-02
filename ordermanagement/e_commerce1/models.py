@@ -39,29 +39,6 @@ def user_created(sender, instance, created, **kwargs):
         instance.save()
 
 
-# class Category(models.Model):
-
-#     object_id = models.UUIDField(
-#         unique=True,
-#         editable=False,
-#         default=uuid.uuid4,
-#         verbose_name='Public identifier',
-#     )
-#     category_name = models.CharField(max_length=30)
-#     category_id = models.CharField(max_length=30, blank=True, null=True)
-#     category_type = models.CharField(max_length=50, choices=CATEGORY, default='CharField')
-
-#     def __str__(self):
-#         return "{}".format(self.category_name) 
-
-# @receiver(post_save, sender=Category)
-# def category_created(sender, instance, created, **kwargs):
-#     if created:
-#         instance_id = instance.id
-#         category_id = 'CT-{0}'.format(str(instance_id).zfill(3))
-#         instance.category_id = category_id
-#         instance.save()
-
 
 class Product(models.Model):
 
