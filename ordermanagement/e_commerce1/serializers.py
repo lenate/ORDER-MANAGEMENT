@@ -143,10 +143,11 @@ class OrderSerializer(serializers.ModelSerializer):
     def get_product(self, obj):
         try:
             if obj.product:
-                product_dict = {
-                    "id": obj.product.id,
-                    "product_name": obj.product.name,
-                }
+                products_list = obj.product.all()
+        
+                product_dict = [{
+                    "id": items.id,
+                    "product_name": items.name} for items in products_list]
                 return product_dict
             return None
         except Exception as exception:

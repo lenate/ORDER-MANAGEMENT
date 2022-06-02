@@ -73,8 +73,8 @@ class Order(models.Model):
         default=uuid.uuid4,
         verbose_name='Public identifier',
     )
-    product = models.ForeignKey(
-        Product, blank=True, null=True, on_delete=models.SET_NULL
+    product = models.ManyToManyField(
+        Product, blank=True, related_name="orders_products"
     )
     user = models.ForeignKey(
        User, blank=True, null=True, on_delete=models.SET_NULL

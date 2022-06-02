@@ -160,7 +160,7 @@ class OrderAddView(CreateAPIView):
                 user=self.request.data.get('user')
                 usertype=User.objects.get(id=user)
                 product_type=self.request.data.get('product')
-                product=Product.objects.get(id=product_type)
+                product=Product.objects.filter(id__in=product_type)
                 if usertype.user_type == 'Consumer':
                     serializer.save(object_id=gen_object_id(Order),
                     user=usertype,product=product)
@@ -202,7 +202,7 @@ class OrderEditView(RetrieveUpdateAPIView):
                 user_id=self.request.data.get('user')
                 usertype=User.objects.get(id=user_id)
                 product_type=self.request.data.get('product')
-                product=Product.objects.get(id=product_type)
+                product=Product.objects.filter(id__in=product_type)
                 if usertype.user_type == 'Consumer':
                     serializer.save(object_id=gen_object_id(Order),
                     user=usertype,product=product)   
